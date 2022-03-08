@@ -94,44 +94,20 @@ def x(row, col, next, side, top):
   for x in used:
     if int(x[0]) == row and int(x[1]) == col:
       choose()
-  if row == 1:
-    y = 0
-  elif row == 2:
-    y = 70
-  elif row == 3:
-    y = 137
-  elif row == 4:
-    y = 204
-  elif row == 5:
-    y = 270
-  elif row == 6:
-    y = 337
-  elif row == 7:
-    y = 404
-  elif row == 8:
-    y = 470
-  elif row == 9:
-    y = 538
-
-
-  if col == 1:
-    x = 0
-  elif col == 2:
-    x = 70
-  elif col == 3:
-    x = 136
-  elif col == 4:
-    x = 204
-  elif col == 5:
-    x = 270
-  elif col == 6:
-    x = 335
-  elif col == 7:
-    x = 404
-  elif col == 8:
-    x = 470
-  elif col == 9:
-    x = 537
+  for p in range(1, 3):
+    if p == 1:
+      
+      if row == 1:
+        y = 0
+      for l in range(2, 9):
+          if row == l:
+            y = 70 + (l - 2) * 68  
+    elif p == 2:
+      if col == 1:
+        x = 0
+      for l in range(2, 9):
+          if col == l:
+            x = 70 + (l - 2) * 68  
   used += [(row, col, "x", next, side, top)]
   save += [(x, y, "x")]
   screen.blit(image, (x, y))
@@ -145,137 +121,43 @@ def o(row, col, next, side, top):
     
     if x[0] == row and x[1] == col:
       choose()
+  for p in range(1, 3):
+    if p == 1:
+      
+      if row == 1:
+        y = 0
+      for l in range(2, 9):
+          if row == l:
+            y = 70 + (l - 2) * 67  
+    elif p == 2:
+      if col == 1:
+        x = 0
+      for l in range(2, 9):
+          if col == l:
+            x = 70 + (l - 2) * 66 
   if row == 0:
     choose()
-  if row == 1:
-    y = -15
-  elif row == 2:
-    y = 55
-  elif row == 3:
-    y = 122
-  elif row == 4:
-    y = 189
-  elif row == 5:
-    y = 255
-  elif row == 6:
-    y = 322
-  elif row == 7:
-    y = 389
-  elif row == 8:
-    y = 455
-  elif row == 9:
-    y = 522
+  for p in range(1, 3):
+    if p == 1:
+      
+      if row == 1:
+        y = -15
+      for l in range(2, 9):
+          if row == l:
+            y = 65 + (l - 2) * 65
+    elif p == 2:
+      if col == 1:
+        x = 0
+      for l in range(2, 9):
+          if col == l:
+            x = 70 + (l - 2) * 67 
 
-
-  if col == 1:
-    x = 0
-  elif col == 2:
-    x = 70
-  elif col == 3:
-    x = 136
-  elif col == 4:
-    x = 204
-  elif col == 5:
-    x = 270
-  elif col == 6:
-    x = 335
-  elif col == 7:
-    x = 404
-  elif col == 8:
-    x = 470
-  elif col == 9:
-    x = 537
   used += [(row, col, "o", next, side, top)]
   save += [(x, y, "o")]
 
   screen.blit(image, (x, y))
-
-def check(scheck, xo, bs):
-  global poophi, xw, ow
-  win = 0
-  poophi = 0
-  try:
-
-    #Win = true if {1, 2, 3}{1, 4, 7}{1, 5, 9}{2, 5, 8}{3, 6, 9}{3, 5, 7}{4, 5, 6}{7, 8, 9}
-    if (scheck[0] == 3 or scheck[1] == 3 or scheck[2] == 3) and (scheck[1] == 6  or scheck[2] == 6 or scheck[3] == 6 or scheck[4] == 6 or scheck[5] == 6) and (scheck[2] == 9 or scheck[3] == 9 or scheck[4] == 9 or scheck[5] == 9 or scheck[6] == 9 or scheck[7] == 9 or scheck[8] == 9):
-      win = 1
-  except IndexError:
-    pass 
-  try:  
-    if (scheck[0] == 1) and (scheck[1] == 2) and (scheck[2] == 3):
-      win = 1
-  except IndexError:
-    pass
-  try:
-
-    if (scheck[0] == 1) and (scheck[1] == 4 or scheck[2] == 4 or scheck[3] == 4) and (scheck[2] == 7 or scheck[3] == 7 or scheck[4] == 7 or scheck[5] == 7 or scheck[6] == 7):
-      win = 1
-  except IndexError:
-    pass
-  try:
-    if (scheck[0] == 1) and (scheck[1] == 5 or scheck[2] == 5 or scheck[3] == 5 or scheck[4] == 5) and (scheck[2] == 9 or scheck[3] == 9 or scheck[4] == 9 or scheck[5] == 9 or scheck[6] == 9 or scheck[7] == 9 or scheck[8] == 9):
-      win = 1
-  except IndexError:
-    pass
-  try:
-    if (scheck[0] == 2 or scheck[1] == 2) and (scheck[1] == 5 or scheck[2] == 5 or scheck[3] == 5 or scheck[4] == 5) and (scheck[2] == 8 or scheck[3] == 8 or scheck[4] == 8 or scheck[5] == 8 or scheck[6] == 7 or scheck[7] == 8):
-      win = 1
-  except IndexError:
-    pass
-  try:
-    if (scheck[0] == 3 or scheck[1] == 3 or scheck[2] == 3) and (scheck[1] == 5 or scheck[2] == 5 or scheck[3] == 5 or scheck[4] == 5) and (scheck[2] == 7 or scheck[3] == 7 or scheck[4] == 7 or scheck[5] == 7 or scheck[6] == 7):
-      win = 1
-  except IndexError:
-    pass
-  try:
-      if (scheck[0] == 4 or scheck[1] == 4 or scheck[2] == 4 or scheck[3] == 4) and (scheck[1] == 5 or scheck[2] == 5 or scheck[3] == 5 or scheck[4] == 5) and (scheck[2] == 6 or scheck[3] == 6 or scheck[4] == 6 or scheck[5] == 6):
-        win = 1
-  except IndexError:
-    pass
-  try:
-    if (scheck[1] == 7 or scheck[0] == 7 or scheck[2] == 7 or scheck[3] == 7 or scheck[4] == 7 or scheck[5] == 7 or scheck[6] == 7) and (scheck[0] == 8 or scheck[1] == 8 or scheck[2] == 8 or scheck[3] == 8 or scheck[4] == 8 or [5] == 8 or scheck[6] == 7 or scheck[7] == 8) and (scheck[0] == 9 or scheck[1] == 9 or scheck[2] == 9 or scheck[3] == 9 or scheck[4] == 9 or scheck[5] == 9 or scheck[6] == 9 or scheck[7] == 9 or scheck[8] == 9):
-      win = 1
-  except IndexError:
-    pass
-  if win == 1:
-    coord = getcoord(bs)
-    meow = 0
-    if xo == 0:
-       for m in ow:
-         if m == bs:
-           meow = 1
-       if meow != 1:
-        image = pygame.image.load('x.png'). convert_alpha()
-        image = pygame.transform.scale(image, (200, 200))       
-        screen.blit(image, (coord[0], coord[1]))
-       lol = 0
-       for m in xw:
-          if m == bs:
-            lol = 1
-       if lol == 0:
-          xw += [bs]
-       pygame.display.update()
-       poophi = 0
-       bigwinc()
-    if xo == 1:
-      lol = 0
-      meow = 0
-      for m in ow:
-        if m == bs:
-          meow = 1
-      if meow == 0:
-        ow += [bs]
-  
-        image = pygame.image.load('o.png'). convert_alpha()
-        image = pygame.transform.scale(image, (200, 300))       
-        screen.blit(image, (coord[0], coord[1] - 50))
-        pygame.display.update()
-        poophi = 1
-      bigwinc()
-
-
 def winchecks():
-  global used, h, w
+  global used, h, w, xw, ow
   s1 = []
 
   xs = []
@@ -302,7 +184,6 @@ def winchecks():
       num = 9
     #Check what it is
     bs = int(x[3])
-
     if x[2] == "x":
       
       xs += [(num, bs)]
@@ -313,7 +194,6 @@ def winchecks():
           scheck += l
           scheck.remove(l[1])
         scheck.sort()
-        check(scheck, xo, bs)
     elif x[2] == "o":
       os += [(num, bs)]
       scheck = []
@@ -323,7 +203,42 @@ def winchecks():
           scheck += l
           scheck.remove(l[1])
         scheck.sort()
-      check(scheck, xo, bs)
+    win = bwc(scheck)
+    if win == 1:
+      coord = getcoord(bs)
+      meow = 0
+      if xo == 0:
+        for m in ow:
+          if m == bs:
+            meow = 1
+        if meow != 1:
+          image = pygame.image.load('x.png'). convert_alpha()
+          image = pygame.transform.scale(image, (200, 200))       
+          screen.blit(image, (coord[0], coord[1]))
+        lol = 0
+        for m in xw:
+            if m == bs:
+              lol = 1
+        if lol == 0:
+            xw += [bs]
+        pygame.display.update()
+        poophi = 0
+        bigwinc()
+      if xo == 1:
+        lol = 0
+        meow = 0
+        for m in ow:
+          if m == bs:
+            meow = 1
+        if meow == 0:
+          ow += [bs]
+    
+          image = pygame.image.load('o.png'). convert_alpha()
+          image = pygame.transform.scale(image, (200, 300))       
+          screen.blit(image, (coord[0], coord[1] - 50))
+          pygame.display.update()
+          poophi = 1
+        bigwinc()
 
 
 
@@ -452,14 +367,20 @@ def freeze():
 
 def bigwinc():
   global xw, ow, poophi
-  
   xw.sort()
   ow.sort()
   if poophi == 0:
     thing = xw
   elif poophi == 1:
     thing = ow
-  bwc(thing)
+  win = bwc(thing)
+  if win == 1:
+    freeze()
+  poophi += 1
+  if poophi != 2:
+    bigwinc()
+  else:
+    poophi = 0
 def bwc(thing):
   global poophi
   win = 0
@@ -505,12 +426,7 @@ def bwc(thing):
       win = 1
   except IndexError:
     pass
-  if win == 1:
-    freeze()
-  poophi += 1
-  if poophi != 2:
-    bigwinc()
-  else:
-    poophi = 0
+  return win
+
 if __name__ == "__main__":
   setup()
